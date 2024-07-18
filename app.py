@@ -14,6 +14,7 @@
 
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 from typing import NamedTuple, Union
 
@@ -53,8 +54,22 @@ app.title = APP_TITLE
 server = app.server
 app.config.suppress_callback_exceptions = True
 
-BASE_PATH = Path(__file__).parent.resolve()
-DATA_PATH = BASE_PATH.joinpath("input").resolve()
+# Parse debug argument
+parser = argparse.ArgumentParser(description="Dash debug setting.")
+parser.add_argument(
+    "--debug",
+    action="store_true",
+    help="Add argument to see Dash debug menu and get live reloading while developing."
+)
+
+args = parser.parse_args()
+DEBUG = args.debug
+
+print(f"Debug has been set to: {DEBUG}")
+if not DEBUG:
+    print("This means that the app will not show live code updates and the Dash debug\
+          menu will be hidden. If you wish to edit any code while running, it is recommended\
+          to run the app with the `--debug` argument.")
 
 # Generates css file and variable using THEME_COLOR and THEME_COLOR_SECONDARY settings
 css = f"""/* Automatically generated theme settings css file, see app.py */
