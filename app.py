@@ -58,7 +58,7 @@ parser = argparse.ArgumentParser(description="Dash debug setting.")
 parser.add_argument(
     "--debug",
     action="store_true",
-    help="Add argument to see Dash debug menu and get live reload updates while developing."
+    help="Add argument to see Dash debug menu and get live reload updates while developing.",
 )
 
 args = parser.parse_args()
@@ -66,7 +66,11 @@ DEBUG = args.debug
 
 print(f"\nDebug has been set to: {DEBUG}")
 if not DEBUG:
-    print("""The app will not show live code updates and the Dash debug menu will be hidden.\nIf you wish to edit any code while the app is running, it is recommended to run the app followed by `--debug`.\n""")
+    print(
+        "The app will not show live code updates and the Dash debug menu will be hidden.",
+        "If editting code while the app is running, run the app with `python app.py --debug`.\n",
+        sep="\n"
+    )
 
 # Generates css file and variable using THEME_COLOR and THEME_COLOR_SECONDARY settings
 css = f"""/* Automatically generated theme settings css file, see app.py */
@@ -92,7 +96,8 @@ def toggle_left_column(collapse_trigger: int, to_collapse_class: str) -> str:
 
     Args:
         collapse_trigger (int): The (total) number of times a collapse button has been clicked.
-        to_collapse_class (str): Current class name of the thing to collapse, 'collapsed' if not visible, empty string if visible
+        to_collapse_class (str): Current class name of the thing to collapse, 'collapsed' if not
+            visible, empty string if visible.
 
     Returns:
         str: The new class name of the thing to collapse.

@@ -200,9 +200,7 @@ def generate_run_buttons() -> html.Div:
     return html.Div(
         id="button-group",
         children=[
-            html.Button(
-                id="run-button", children="Run Optimization", n_clicks=0, disabled=False
-            ),
+            html.Button(id="run-button", children="Run Optimization", n_clicks=0, disabled=False),
             html.Button(
                 id="cancel-button",
                 children="Cancel Optimization",
@@ -294,9 +292,7 @@ def set_html(app):
         id="app-container",
         children=[
             # Below are any temporary storage items, e.g., for sharing data between callbacks.
-            dcc.Store(
-                id="run-in-progress", data=False  # Indicates whether run is in progress
-            ),
+            dcc.Store(id="run-in-progress", data=False),  # Indicates whether run is in progress
             # Header brand banner
             html.Div(className="banner", children=[html.Img(src=THUMBNAIL)]),
             # Settings and results columns
