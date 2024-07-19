@@ -39,7 +39,7 @@ def slider(label: str, id: str, config: dict) -> html.Div:
     Args:
         label: The title that goes above the slider.
         id: A unique selector for this element.
-        config: A dictionary of slider configerations, see dcc.Slider docs.
+        config: A dictionary of slider configerations, see dcc.Slider Dash docs.
     """
     return html.Div(
         className="slider-wrapper",
@@ -140,13 +140,11 @@ def generate_options(options_list: list) -> list[dict]:
     return [{"label": label, "value": i} for i, label in enumerate(options_list)]
 
 
-def generate_control_card() -> html.Div:
-    """This function generates the control card for the dashboard, which
-        contains the settings for selecting the scenario, model, and solver.
+def generate_settings_form() -> html.Div:
+    """This function generates settings for selecting the scenario, model, and solver.
 
     Returns:
-        html.Div: A Div containing the settings for selecting the scenario,
-            model, and solver.
+        html.Div: A Div containing the settings for selecting the scenario, model, and solver.
     """
     dropdown_options = generate_options(DROPDOWN)
     checklist_options = generate_options(CHECKLIST)
@@ -157,66 +155,66 @@ def generate_control_card() -> html.Div:
         for sampler_type, label in SAMPLER_TYPES.items()
     ]
 
-    return [
-        html.Div(
-            className="settings",
-            children=[
-                slider(
-                    "Example Slider",
-                    "slider",
-                    SLIDER,
-                ),
-                dropdown(
-                    "Example Dropdown",
-                    "dropdown",
-                    sorted(dropdown_options, key=lambda op: op["value"]),
-                ),
-                checklist(
-                    "Example Checklist",
-                    "checklist",
-                    sorted(checklist_options, key=lambda op: op["value"]),
-                    [0],
-                ),
-                radio(
-                    "Example Radio",
-                    "radio",
-                    sorted(radio_options, key=lambda op: op["value"]),
-                    0,
-                ),
-                dropdown(
-                    "Solver",
-                    "sampler-type-select",
-                    sorted(sampler_options, key=lambda op: op["value"]),
-                ),
-                html.Label("Solver Time Limit (seconds)"),
-                dcc.Input(
-                    id="solver-time-limit",
-                    type="number",
-                    **SOLVER_TIME,
-                ),
-            ],
-        ),
-        # Run and cancel buttons to run the optimization.
-        html.Div(
-            id="button-group",
-            children=[
-                html.Button(
-                    id="run-button", children="Run Optimization", n_clicks=0, disabled=False
-                ),
-                html.Button(
-                    id="cancel-button",
-                    children="Cancel Optimization",
-                    n_clicks=0,
-                    className="display-none",
-                ),
-            ],
-        ),
-    ]
+    return html.Div(
+        className="settings",
+        children=[
+            slider(
+                "Example Slider",
+                "slider",
+                SLIDER,
+            ),
+            dropdown(
+                "Example Dropdown",
+                "dropdown",
+                sorted(dropdown_options, key=lambda op: op["value"]),
+            ),
+            checklist(
+                "Example Checklist",
+                "checklist",
+                sorted(checklist_options, key=lambda op: op["value"]),
+                [0],
+            ),
+            radio(
+                "Example Radio",
+                "radio",
+                sorted(radio_options, key=lambda op: op["value"]),
+                0,
+            ),
+            dropdown(
+                "Solver",
+                "sampler-type-select",
+                sorted(sampler_options, key=lambda op: op["value"]),
+            ),
+            html.Label("Solver Time Limit (seconds)"),
+            dcc.Input(
+                id="solver-time-limit",
+                type="number",
+                **SOLVER_TIME,
+            ),
+        ],
+    )
 
 
+def generate_run_buttons() -> html.Div:
+    """Run and cancel buttons to run the optimization."""
+    return html.Div(
+        id="button-group",
+        children=[
+            html.Button(
+                id="run-button", children="Run Optimization", n_clicks=0, disabled=False
+            ),
+            html.Button(
+                id="cancel-button",
+                children="Cancel Optimization",
+                n_clicks=0,
+                className="display-none",
+            ),
+        ],
+    )
 
-def generate_problem_details_table(solver: str, time_limit: int) -> list[html.Tr]:
-    """Generate the problem details table.
+
+def generate_problem_details_table_rows(solver: str, time_limit: int) -> list[html.Tr]:
+    """Generates table rows for the problem details table.
 
     Args:
         solver: The solver used for optimization.
@@ -296,9 +294,8 @@ def set_html(app):
         id="app-container",
         children=[
             # Below are any temporary storage items, e.g., for sharing data between callbacks.
-            dcc.Store(id="sampler-type"),  # Solver type used for latest run
-            dcc.Store(  # Callback blocker to signal that the run is complete
-                id="run-in-progress", data=False
+            dcc.Store(
+                id="run-in-progress", data=False  # Indicates whether run is in progress
             ),
             # Header brand banner
             html.Div(className="banner", children=[html.Img(src=THUMBNAIL)]),
@@ -319,7 +316,8 @@ def set_html(app):
                                         children=[
                                             html.H1(MAIN_HEADER),
                                             html.P(DESCRIPTION),
-                                            *generate_control_card(),
+                                            generate_settings_form(),
+                                            generate_run_buttons(),
                                         ],
                                     )
                                 ],

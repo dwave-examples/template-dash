@@ -96,7 +96,7 @@ input[type="radio"] {
 }
   
 #app-container {
-    min-width: 1000px;
+    min-width: 100rem;
     height: 100vh;
     display: flex;
     flex-direction: column;

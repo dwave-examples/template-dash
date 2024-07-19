@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-/* CSS Style rules for tabs like the input and results tabs */
+/* Style rules for tabs like the input and results tabs */
 
 .tab-container {
     border-bottom: 3px solid var(--theme-secondary);

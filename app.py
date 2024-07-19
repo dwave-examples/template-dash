@@ -24,7 +24,7 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 
 from app_configs import APP_TITLE, THEME_COLOR, THEME_COLOR_SECONDARY
-from dash_html import generate_problem_details_table, set_html
+from dash_html import generate_problem_details_table_rows, set_html
 from src.enums import SamplerType
 
 cache = diskcache.Cache("./cache")
@@ -58,17 +58,15 @@ parser = argparse.ArgumentParser(description="Dash debug setting.")
 parser.add_argument(
     "--debug",
     action="store_true",
-    help="Add argument to see Dash debug menu and get live reloading while developing."
+    help="Add argument to see Dash debug menu and get live reload updates while developing."
 )
 
 args = parser.parse_args()
 DEBUG = args.debug
 
-print(f"Debug has been set to: {DEBUG}")
+print(f"\nDebug has been set to: {DEBUG}")
 if not DEBUG:
-    print("This means that the app will not show live code updates and the Dash debug\
-          menu will be hidden. If you wish to edit any code while running, it is recommended\
-          to run the app with the `--debug` argument.")
+    print("""The app will not show live code updates and the Dash debug menu will be hidden.\nIf you wish to edit any code while the app is running, it is recommended to run the app followed by `--debug`.\n""")
 
 # Generates css file and variable using THEME_COLOR and THEME_COLOR_SECONDARY settings
 css = f"""/* Automatically generated theme settings css file, see app.py */
@@ -129,7 +127,6 @@ def render_initial_state(slider_value: int) -> str:
 class RunOptimizationReturn(NamedTuple):
     """Return type for the ``run_optimization`` callback function."""
 
-    sampler_type: str = dash.no_update
     results: str = dash.no_update
     problem_details_table: list = dash.no_update
     # Add more return variables here. Return values for callback functions
@@ -138,7 +135,6 @@ class RunOptimizationReturn(NamedTuple):
 
 @app.callback(
     # The Outputs below must align with `RunOptimizationReturn`.
-    Output("sampler-type", "data"),
     Output("results", "children"),
     Output("problem-details", "children"),
     background=True,
@@ -195,7 +191,6 @@ def run_optimization(
         A NamedTuple (RunOptimizationReturn) containing all outputs to be used when updating the HTML
         template (in ``dash_html.py``). These are:
 
-            sampler-type: The sampler used (``"quantum"`` or ``"classical"``).
             results: The results to display in the results tab.
             problem-details: List of the table rows for the problem details table.
     """
@@ -224,13 +219,12 @@ def run_optimization(
     ###########################
 
     # Generates a list of table rows for the problem details table.
-    problem_details_table = generate_problem_details_table(
+    problem_details_table = generate_problem_details_table_rows(
         solver="Classical" if sampler_type is SamplerType.CLASSICAL else "Quantum Hybrid",
         time_limit=time_limit,
     )
 
     return RunOptimizationReturn(
-        sampler_type="classical" if sampler_type is SamplerType.CLASSICAL else "quantum",
         results="Put demo results here.",
         problem_details_table=problem_details_table,
     )
