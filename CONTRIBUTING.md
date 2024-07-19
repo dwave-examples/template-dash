@@ -8,11 +8,10 @@ started, we encourage you to take a look at this document for some guidelines.
 While we have a preference for application oriented examples, we welcome all
 examples that demonstrate use of Ocean tools.
 
-To see our categorized collection of examples, create a free acount on
-[Leap](https://cloud.dwavesys.com/leap/signup/) and take a look
-[here](https://cloud.dwavesys.com/leap/examples/). You can also find our existing
-examples by going through the repositories in
-[dwave-examples](https://github.com/dwave-examples).
+To see our categorized collection of demos, create a free account on
+[Leap](https://cloud.dwavesys.com/leap/signup/) and take a look at 
+[our library of examples](https://cloud.dwavesys.com/leap/examples/) or by
+going through the repositories in [dwave-examples](https://github.com/dwave-examples).
 
 ## Steps for Contributing
 
@@ -33,11 +32,12 @@ examples by going through the repositories in
 Please make sure that your example includes the following:
 
 * `README.md`:
-    * We prefer `.md` over `.rst`.
+    * Should be written in Markdown (and not ReStructuredText).
     * See this repository's [README](README.md).
 
 * `requirements.txt`:
     * `dwave-ocean-sdk` should be unpinned and lower bounded.
+    * Add any other necessary requirements for running your example and make sure they're either pinned to a version supported by the latest Ocean SDK release or lower bounded.
 
 * `LICENSE`:
     * Examples should comply with the Apache 2.0 License. Please make sure that:
@@ -51,12 +51,11 @@ Python versions we currently test our examples with, please take a look at our
 documentation
 [here](https://docs.ocean.dwavesys.com/en/stable/overview/install.html).
 
-Feel free to copy the [`.circleci/`](.circleci/) directory into your example's root directory.
-Once approved, we will make sure that your example is set up on our CircleCI
-account.
+The example repository should contain the [`.circleci/`](.circleci/) directory to support running tests in CI.
+Once approved, we will make sure that your example is set up on our CircleCI account.
 
 To ensure your example runs in [GitHub Codespaces](https://docs.github.com/en/codespaces/overview),
-copy the [`.devcontainer/`](.devcontainer/) directory into your example's root directory.
+make sure to include the [`.devcontainer/`](.devcontainer/) directory into your example's root directory.
 
 ### Code
 
