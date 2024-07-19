@@ -1,26 +1,26 @@
 # Contribution Guidelines
 
-Thanks for your interest in contributing to dwave-examples! Before getting
-started, we encourage you to take a look at this document for some guidelines.
+Thank you for your interest in contributing to dwave-examples! Before getting
+started, we encourage you to take a look at this document of guidelines.
 
 ## What We're Looking For
 
 While we have a preference for application oriented examples, we welcome all
-examples that demonstrate use of Ocean tools.
+examples that demonstrate use of Ocean&#8482; SDK tools.
 
-To see our categorized collection of demos, create a free account on
-[Leap](https://cloud.dwavesys.com/leap/signup/) and take a look at 
-[our library of examples](https://cloud.dwavesys.com/leap/examples/) or by
-going through the repositories in [dwave-examples](https://github.com/dwave-examples).
+To see our categorized collection of demos, create a free account on the
+[Leap&#8482; Quantum Cloud Service](https://cloud.dwavesys.com/leap/signup/) and take a look at
+[our library of examples](https://cloud.dwavesys.com/leap/examples/) or
+go through the demo code repositories in [dwave-examples](https://github.com/dwave-examples).
 
 ## Steps for Contributing
 
-1. Follow GitHub's instructions to [create a repository from a template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
-   Alternatively, clone this repository (or one of our existing examples) as a 
+1. Follow GitHub's instructions on [creating a repository from a template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+   Alternatively, clone this repository (or one of our [existing examples](https://github.com/dwave-examples)) as a
    starting point from which to implement your example.
 
-2. [Open an issue on the dwave-examples/template-dash repository](https://github.com/dwave-examples/template-dash/issues/new/choose)
-   with a link to your example.
+2. [Open an issue](https://github.com/dwave-examples/template-dash/issues/new/choose) in the
+   [dwave-examples/template-dash](https://github.com/dwave-examples/template-dash) repository with a link to your example.
 
 3. To add your example, D-Wave will fork your repository. We may make a pull
    request if we would like your approval for certain code changes.
@@ -32,12 +32,12 @@ going through the repositories in [dwave-examples](https://github.com/dwave-exam
 Please make sure that your example includes the following:
 
 * `README.md`:
-    * Should be written in Markdown (and not ReStructuredText).
+    * Should be written in Markdown (and not reStructuredText).
     * See this repository's [README](README.md).
 
 * `requirements.txt`:
     * `dwave-ocean-sdk` should be unpinned and lower bounded.
-    * Add any other necessary requirements for running your example and make sure they're either pinned to a version supported by the latest Ocean SDK release or lower bounded.
+    * Add requirements for running your example and make sure they are either pinned to a version supported by the latest Ocean&#8482; SDK release or lower bounded.
 
 * `LICENSE`:
     * Examples should comply with the Apache 2.0 License. Please make sure that:
@@ -47,9 +47,9 @@ Please make sure that your example includes the following:
 * Tests that are discoverable through `python -m unittest discover`.
 
 Our examples are tested using CircleCI. For a list of operating systems and
-Python versions we currently test our examples with, please take a look at our
-documentation
-[here](https://docs.ocean.dwavesys.com/en/stable/overview/install.html).
+Python versions we currently test our examples with, please take a look at [our
+documentation](https://docs.ocean.dwavesys.com/en/stable/overview/install.html).
+For more information, visit [orb-examples](https://circleci.com/developer/orbs/orb/dwave/orb-examples).
 
 The example repository should contain the [`.circleci/`](.circleci/) directory to support running tests in CI.
 Once approved, we will make sure that your example is set up on our CircleCI account.
