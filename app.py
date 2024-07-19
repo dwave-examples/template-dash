@@ -15,7 +15,6 @@
 from __future__ import annotations
 
 import argparse
-from pathlib import Path
 from typing import NamedTuple, Union
 
 import dash
@@ -24,7 +23,7 @@ from dash import MATCH, DiskcacheManager, ctx
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 
-from app_configs import APP_TITLE, DEBUG, THEME_COLOR, THEME_COLOR_SECONDARY
+from app_configs import APP_TITLE, THEME_COLOR, THEME_COLOR_SECONDARY
 from dash_html import generate_problem_details_table, set_html
 from src.enums import SamplerType
 

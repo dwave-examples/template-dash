@@ -1,3 +1,4 @@
 *.DS_Store
-assets/custom_00_theme.css
+__pycache__
 cache
+assets/custom_00_theme.css
