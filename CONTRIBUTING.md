@@ -1,11 +1,11 @@
 # Contribution Guidelines
 
-Thank you for your interest in contributing to dwave-examples! Before getting
+Thank you for your interest in contributing to [dwave-examples](https://github.com/dwave-examples)! Before getting
 started, we encourage you to take a look at this document of guidelines.
 
 ## What We're Looking For
 
-While we have a preference for application oriented examples, we welcome all
+While we have a preference for application-oriented examples, we welcome all
 examples that demonstrate use of Ocean&#8482; SDK tools.
 
 To see our categorized collection of demos, create a free account on the
@@ -54,7 +54,7 @@ For more information, visit [orb-examples](https://circleci.com/developer/orbs/o
 The example repository should contain the [`.circleci/`](.circleci/) directory to support running tests in CI.
 Once approved, we will make sure that your example is set up on our CircleCI account.
 
-To ensure your example runs in [GitHub Codespaces](https://docs.github.com/en/codespaces/overview),
+To ensure that your example runs in [GitHub Codespaces](https://docs.github.com/en/codespaces/overview),
 make sure to include the [`.devcontainer/`](.devcontainer/) directory into your example's root directory.
 
 ### Code
