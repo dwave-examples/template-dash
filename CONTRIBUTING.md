@@ -18,7 +18,7 @@ reading through the demo code repositories in [dwave-examples](https://github.co
 1. Follow GitHub's instructions for [creating a repository from a template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
    Alternatively, clone this repository (or one of our [existing examples](https://github.com/dwave-examples)) as a
    starting point from which to implement your example.
-2. Implement your example by following the instructions in the README.
+2. Implement your example by following the instructions in the [README](README.md).
 3. [Open an issue](https://github.com/dwave-examples/template-dash/issues/new/choose) in the
    [dwave-examples/template-dash](https://github.com/dwave-examples/template-dash) repository with a link to your example.
 
