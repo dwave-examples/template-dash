@@ -17,8 +17,9 @@ from enum import Enum
 
 class SolverType(Enum):
     """Add a list of solver options here. If this demo only requires 1 solver,
-        this functionality can be removed.
+    this functionality can be removed.
     """
+
     SOLVER_1 = 0
     SOLVER_2 = 1
 

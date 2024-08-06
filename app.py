@@ -67,7 +67,7 @@ if not DEBUG:
     print(
         "The app will not show live code updates and the Dash debug menu will be hidden.",
         "If editting code while the app is running, run the app with `python app.py --debug`.\n",
-        sep="\n"
+        sep="\n",
     )
 
 # Generates css file and variable using THEME_COLOR and THEME_COLOR_SECONDARY settings

@@ -148,7 +148,9 @@ def generate_settings_form() -> html.Div:
     checklist_options = generate_options(CHECKLIST)
     radio_options = generate_options(RADIO)
 
-    solver_options = [{"label": solver_type.label, "value": solver_type.value} for solver_type in SolverType]
+    solver_options = [
+        {"label": solver_type.label, "value": solver_type.value} for solver_type in SolverType
+    ]
 
     return html.Div(
         className="settings",
