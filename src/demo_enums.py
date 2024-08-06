@@ -22,6 +22,13 @@ class SolverType(Enum):
     SOLVER_1 = 0
     SOLVER_2 = 1
 
+    @property
+    def label(self):
+        return {
+            SolverType.SOLVER_1: "Solver 1",
+            SolverType.SOLVER_2: "Solver 2",
+        }[self]
+
 
 ### If any settings or variables are being used repeatedly, thoughout the code, create a new
 ### Enum for the setting here to avoid string comparisons or other fragile code practices.

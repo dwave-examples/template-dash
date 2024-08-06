@@ -30,8 +30,6 @@ from app_configs import (
 )
 from src.demo_enums import SolverType
 
-SOLVER_TYPES = {SolverType.SOLVER_1: "Solver 1", SolverType.SOLVER_2: "Solver 2"}
-
 
 def slider(label: str, id: str, config: dict) -> html.Div:
     """Slider element for value selection.
@@ -150,10 +148,7 @@ def generate_settings_form() -> html.Div:
     checklist_options = generate_options(CHECKLIST)
     radio_options = generate_options(RADIO)
 
-    solver_options = [
-        {"label": label, "value": solver_type.value}
-        for solver_type, label in SOLVER_TYPES.items()
-    ]
+    solver_options = [{"label": solver_type.label, "value": solver_type.value} for solver_type in SolverType]
 
     return html.Div(
         className="settings",

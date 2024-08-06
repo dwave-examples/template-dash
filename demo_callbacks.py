@@ -127,8 +127,7 @@ def run_optimization(
 
     Args:
         run_click: The (total) number of times the run button has been clicked.
-        solver_type: Either Solver 1 (``0`` or ``SolverType.SOLVER_1``),
-            or Solver 2 (``1`` or ``SolverType.SOLVER_2``).
+        solver_type: The solver to use for the optimization run defined by SolverType in demo_enums.py.
         time_limit: The solver time limit.
         slider_value: The value of the slider.
         dropdown_value: The value of the dropdown.
@@ -149,8 +148,7 @@ def run_optimization(
     if run_click == 0 or ctx.triggered_id != "run-button":
         raise PreventUpdate
 
-    if isinstance(solver_type, int):
-        solver_type = SolverType(solver_type)
+    solver_type = SolverType(solver_type)
 
 
     # The following are example Input and State callback variables.
@@ -171,7 +169,7 @@ def run_optimization(
 
     # Generates a list of table rows for the problem details table.
     problem_details_table = generate_problem_details_table_rows(
-        solver="Solver 2" if solver_type is SolverType.SOLVER_2 else "Solver 1",
+        solver=solver_type.label,
         time_limit=time_limit,
     )
 
