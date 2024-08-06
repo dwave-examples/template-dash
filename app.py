@@ -177,7 +177,7 @@ def run_optimization(
 ) -> RunOptimizationReturn:
     """Runs the optimization and updates UI accordingly.
 
-    This is the main function which is called when the `Run Optimization` button is clicked.
+    This is the main function which is called when the ``Run Optimization`` button is clicked.
     This function takes in all form values and runs the optimization, updates the run/cancel
     buttons, deactivates (and reactivates) the results tab, and updates all relevant HTML
     components.
