@@ -14,7 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-/* Style rules for all custom CSS. */
+/*******************************************************************
+This file contains all custom CSS for this demo.
+The following style rules can be altered or removed and any additional
+custom CSS can be added below.
+*******************************************************************/
 
 .tab-content-results {
     padding: 0 3rem;

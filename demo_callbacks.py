@@ -151,21 +151,10 @@ def run_optimization(
     solver_type = SolverType(solver_type)
 
 
-    # The following are example Input and State callback variables.
-    # This print statement is for instructional purposes and can be removed.
-    print(
-        f"The form has the following values:\n\
-        Example Slider: {slider_value}\n\
-        Example Dropdown: {dropdown_value}\n\
-        Example Checklist: {checklist_value}\n\
-        Example Radio: {radio_value}\n\
-        Solver: {solver_type}\n\
-        Time Limit: {time_limit}"
-    )
-
     ###########################
     ### YOUR CODE GOES HERE ###
     ###########################
+
 
     # Generates a list of table rows for the problem details table.
     problem_details_table = generate_problem_details_table_rows(

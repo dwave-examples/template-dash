@@ -17,7 +17,7 @@ from __future__ import annotations
 
 from dash import dcc, html
 
-from app_configs import (
+from demo_configs import (
     CHECKLIST,
     DESCRIPTION,
     DROPDOWN,
