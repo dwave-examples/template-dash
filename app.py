@@ -25,7 +25,7 @@ from dash.exceptions import PreventUpdate
 
 from app_configs import APP_TITLE, THEME_COLOR, THEME_COLOR_SECONDARY
 from dash_html import generate_problem_details_table_rows, set_html
-from src.enums import SamplerType
+from src.enums import SolverType
 
 cache = diskcache.Cache("./cache")
 background_callback_manager = DiskcacheManager(cache)
@@ -144,8 +144,10 @@ class RunOptimizationReturn(NamedTuple):
     Output("problem-details", "children"),
     background=True,
     inputs=[
+        # The first string in the Input/State elements below must match an id in dash_html.py
+        # Remove or alter the following id's to match any changes made to dash_html.py
         Input("run-button", "n_clicks"),
-        State("sampler-type-select", "value"),
+        State("solver-type-select", "value"),
         State("solver-time-limit", "value"),
         State("slider", "value"),
         State("dropdown", "value"),
@@ -153,8 +155,7 @@ class RunOptimizationReturn(NamedTuple):
         State("radio", "value"),
     ],
     running=[
-        # Shows cancel button while running.
-        (Output("cancel-button", "className"), "", "display-none"),
+        (Output("cancel-button", "className"), "", "display-none"),  # Show/hide cancel button.
         (Output("run-button", "className"), "display-none", ""),  # Hides run button while running.
         (Output("results-tab", "disabled"), True, False),  # Disables results tab while running.
         (Output("results-tab", "label"), "Loading...", "Results"),
@@ -168,7 +169,7 @@ def run_optimization(
     # The parameters below must match the `Input` and `State` variables found
     # in the `inputs` list above.
     run_click: int,
-    sampler_type: Union[SamplerType, int],
+    solver_type: Union[SolverType, int],
     time_limit: float,
     slider_value: int,
     dropdown_value: int,
@@ -184,8 +185,8 @@ def run_optimization(
 
     Args:
         run_click: The (total) number of times the run button has been clicked.
-        sampler_type: Either Quantum Hybrid (``0`` or ``SamplerType.HYBRID``),
-            or Classical (``1`` or ``SamplerType.CLASSICAL``).
+        solver_type: Either Solver 1 (``0`` or ``SolverType.SOLVER_1``),
+            or Solver 2 (``1`` or ``SolverType.SOLVER_2``).
         time_limit: The solver time limit.
         slider_value: The value of the slider.
         dropdown_value: The value of the dropdown.
@@ -206,16 +207,19 @@ def run_optimization(
     if run_click == 0 or ctx.triggered_id != "run-button":
         raise PreventUpdate
 
-    if isinstance(sampler_type, int):
-        sampler_type = SamplerType(sampler_type)
+    if isinstance(solver_type, int):
+        solver_type = SolverType(solver_type)
 
+
+    # The following are example Input and State callback variables.
+    # This print statement is for instructional purposes and can be removed.
     print(
         f"The form has the following values:\n\
         Example Slider: {slider_value}\n\
         Example Dropdown: {dropdown_value}\n\
         Example Checklist: {checklist_value}\n\
         Example Radio: {radio_value}\n\
-        Solver: {sampler_type}\n\
+        Solver: {solver_type}\n\
         Time Limit: {time_limit}"
     )
 
@@ -225,7 +229,7 @@ def run_optimization(
 
     # Generates a list of table rows for the problem details table.
     problem_details_table = generate_problem_details_table_rows(
-        solver="Classical" if sampler_type is SamplerType.CLASSICAL else "Quantum Hybrid",
+        solver="Solver 2" if solver_type is SolverType.SOLVER_2 else "Solver 1",
         time_limit=time_limit,
     )
 

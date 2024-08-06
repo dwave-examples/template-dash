@@ -28,9 +28,9 @@ from app_configs import (
     THEME_COLOR_SECONDARY,
     THUMBNAIL,
 )
-from src.enums import SamplerType
+from src.enums import SolverType
 
-SAMPLER_TYPES = {SamplerType.HYBRID: "Quantum Hybrid", SamplerType.CLASSICAL: "Classical"}
+SOLVER_TYPES = {SolverType.SOLVER_1: "Solver 1", SolverType.SOLVER_2: "Solver 2"}
 
 
 def slider(label: str, id: str, config: dict) -> html.Div:
@@ -150,9 +150,9 @@ def generate_settings_form() -> html.Div:
     checklist_options = generate_options(CHECKLIST)
     radio_options = generate_options(RADIO)
 
-    sampler_options = [
-        {"label": label, "value": sampler_type.value}
-        for sampler_type, label in SAMPLER_TYPES.items()
+    solver_options = [
+        {"label": label, "value": solver_type.value}
+        for solver_type, label in SOLVER_TYPES.items()
     ]
 
     return html.Div(
@@ -182,8 +182,8 @@ def generate_settings_form() -> html.Div:
             ),
             dropdown(
                 "Solver",
-                "sampler-type-select",
-                sorted(sampler_options, key=lambda op: op["value"]),
+                "solver-type-select",
+                sorted(solver_options, key=lambda op: op["value"]),
             ),
             html.Label("Solver Time Limit (seconds)"),
             dcc.Input(

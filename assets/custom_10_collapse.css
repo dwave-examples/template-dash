@@ -16,27 +16,29 @@ limitations under the License.
 
 /* Style rules for collapsible dropdowns like left-column-collapse and problem-details-collapse */
 
-.left-column .left-column-layer-2 {
-    padding: 3rem 2rem 4rem;
-    width: var(--left-col-width);
-    box-sizing: border-box;
-}
-
-.details-collapse-wrapper {
-    margin-bottom: 2rem;
-    overflow: hidden;
-}
-
 .left-column .left-column-layer-1 {
     width: var(--left-col-width);
     transition: width 0.6s ease-in-out;
     overflow-x: hidden;
     overflow-y: auto;
+    direction: rtl;
 }
 
 .details-to-collapse {
     height: var(--problem-details-height);
     transition: height 0.6s ease-in-out;
+    overflow: hidden;
+}
+
+.left-column .left-column-layer-2 {
+    padding: 3rem 2rem 4rem;
+    width: var(--left-col-width);
+    box-sizing: border-box;
+    direction: ltr;
+}
+
+.details-collapse-wrapper {
+    margin-bottom: 2rem;
     overflow: hidden;
 }
 

@@ -15,6 +15,13 @@
 from enum import Enum
 
 
-class SamplerType(Enum):
-    HYBRID = 0
-    CLASSICAL = 1
+class SolverType(Enum):
+    """Add a list of solver options here. If this demo only requires 1 solver,
+        this functionality can be removed.
+    """
+    SOLVER_1 = 0
+    SOLVER_2 = 1
+
+
+### If any settings or variables are being used repeatedly, thoughout the code, create a new
+### Enum for the setting here to avoid string comparisons or other fragile code practices.
