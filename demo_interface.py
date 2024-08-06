@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This file stores the HTML layout for the app."""
+"""This file stores the Dash HTML layout for the app."""
 from __future__ import annotations
 
 from dash import dcc, html
@@ -28,7 +28,7 @@ from app_configs import (
     THEME_COLOR_SECONDARY,
     THUMBNAIL,
 )
-from src.enums import SolverType
+from src.demo_enums import SolverType
 
 SOLVER_TYPES = {SolverType.SOLVER_1: "Solver 1", SolverType.SOLVER_2: "Solver 2"}
 
@@ -286,9 +286,9 @@ def problem_details(index: int) -> html.Div:
     )
 
 
-def set_html(app):
+def create_interface():
     """Set the application HTML."""
-    app.layout = html.Div(
+    return html.Div(
         id="app-container",
         children=[
             # Below are any temporary storage items, e.g., for sharing data between callbacks.
