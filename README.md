@@ -1,9 +1,12 @@
 ### Interested in contributing a code example?
 
-Please take a look at our [contribution guidelines](CONTRIBUTING.md) before
-getting started. Thank you!
+Please take a look at our [contribution guidelines](CONTRIBUTING.md) before getting started.
+Thank you!
 
-The Dash template is intended for demos that would benefit from a user interface. This user interface could include settings to run and customize the problem, an interactive graphical element, or tables/charts to compare different solutions. This template is also useful for demos that are intended for a general audience, as it is more approachable for those without a technical background.
+The Dash template is intended for demos that would benefit from a user interface. This user
+interface could include settings to run and customize the problem, an interactive graphical element,
+or tables/charts to compare different solutions. This template is also useful for demos that are
+intended for a general audience, as it is more approachable for those without a technical background.
 
 <!-- Before submitting your code, please delete everything above and including this line. -->
 
@@ -23,7 +26,8 @@ Please include a screenshot of your demo below.
 ![Demo Example](static/demo.png)
 
 ## Installation
-You can run this example without installation in cloud-based IDEs that support the [Development Containers specification](https://containers.dev/supporting) (aka "devcontainers").
+You can run this example without installation in cloud-based IDEs that support the
+[Development Containers specification](https://containers.dev/supporting) (aka "devcontainers").
 
 For development environments that do not support `devcontainers`, install requirements:
 
@@ -31,10 +35,14 @@ For development environments that do not support `devcontainers`, install requir
 pip install -r requirements.txt
 ```
 
-If you are cloning the repo to your local system, working in a [virtual environment](https://docs.python.org/3/library/venv.html) is recommended.
+If you are cloning the repo to your local system, working in a
+[virtual environment](https://docs.python.org/3/library/venv.html) is recommended.
 
 ## Usage
-Your development environment should be configured to access the [Leap&trade; Quantum Cloud Service](https://docs.ocean.dwavesys.com/en/stable/overview/sapi.html). You can see information about supported IDEs and authorizing access to your Leap account [here](https://docs.dwavesys.com/docs/latest/doc_leap_dev_env.html).
+Your development environment should be configured to access the
+[Leap&trade; Quantum Cloud Service](https://docs.ocean.dwavesys.com/en/stable/overview/sapi.html).
+You can see information about supported IDEs and authorizing access to your Leap account
+[here](https://docs.dwavesys.com/docs/latest/doc_leap_dev_env.html).
 
 Run the following terminal command to start the Dash app:
 
@@ -42,7 +50,8 @@ Run the following terminal command to start the Dash app:
 python app.py
 ```
 
-If you plan on editing any files while the app is running, please run the app with the `--debug` command-line argument for live reloads and easier debugging:
+If you plan on editing any files while the app is running, please run the app with the `--debug`
+command-line argument for live reloads and easier debugging:
 
 ```bash
 python app.py --debug
@@ -50,19 +59,25 @@ python app.py --debug
 
 Access the user interface with your browser at http://127.0.0.1:8050/.
 
-The demo program opens an interface where you can configure problems and submit these problems to a solver.
+The demo program opens an interface where you can configure problems and submit these problems to
+a solver.
 
 Configuration options can be found in the [demo_configs.py](demo_configs.py) file.
 
 ## Problem Description
 Give an overview of the problem you are solving in this demo.
 
-**Objectives**: define the goal this example attempts to accomplish by minimizing or maximizing certain aspects of the problem. For example, a production-line optimization might attempt to minimize the time to produce all of the products.
+**Objectives**: define the goal this example attempts to accomplish by minimizing or maximizing
+certain aspects of the problem. For example, a production-line optimization might attempt to
+minimize the time to produce all of the products.
 
-**Constraints**: aspects of the problem, with limited or no flexibility, that must be satisfied for solutions to be considered feasible. For example, a production-line optimization might have a limitation that Machine A can only bend 10 parts per hour.
+**Constraints**: aspects of the problem, with limited or no flexibility, that must be satisfied for
+solutions to be considered feasible. For example, a production-line optimization might have a
+limitation that Machine A can only bend 10 parts per hour.
 
 ## Model Overview
-The clearer your model is presented here, the more useful it will be to others. For a strong example of this section, see [here](https://github.com/dwave-examples/3d-bin-packing#model-overview).
+The clearer your model is presented here, the more useful it will be to others. For a strong example
+of this section, see [here](https://github.com/dwave-examples/3d-bin-packing#model-overview).
 
 ### Parameters
 List and define the parameters used in your model.
@@ -74,10 +89,12 @@ List and define (including type: e.g., "binary" or "integer") the variables solv
 List and define any combinations of variables used for easier representations of the models.
 
 ### Objective
-Mathematical formulation of the objective described in the previous section using the listed parameters, variables, etc.
+Mathematical formulation of the objective described in the previous section using the listed
+parameters, variables, etc.
 
 ### Constraints
-Mathematical formulation of the constraints described in the previous section using the listed parameters, variables, etc.
+Mathematical formulation of the constraints described in the previous section using the listed
+parameters, variables, etc.
 
 ## Code Overview
 
@@ -94,7 +111,8 @@ the code.
 
 ## References
 
-A. Person (YEAR), "An Article Title that Helped Formulate the Problem". [Link Title](https://example.com/)
+A. Person (YEAR), "An Article Title that Helped Formulate the Problem".
+[Link Title](https://example.com/)
 
 ## License
 
