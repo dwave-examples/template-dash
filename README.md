@@ -8,7 +8,8 @@ interface could include settings to run and customize the problem, an interactiv
 or tables/charts to compare different solutions. This template is also useful for demos that are
 intended for a general audience, as it is more approachable for those without a technical background.
 
-<!-- Before submitting your code, please delete everything above and including this line. -->
+<!-- Before submitting your code, please delete everything above and including this comment. -->
+<!-- The following is a README template for your new demo. -->
 
 # Demo Name
 
@@ -24,6 +25,8 @@ A clear description allows us to properly categorize your demo.
 Please include a screenshot of your demo below.
 
 ![Demo Example](static/demo.png)
+
+<!-- Below is boilerplate instructions to be included, as is, in the final demo. -->
 
 ## Installation
 You can run this example without installation in cloud-based IDEs that support the
@@ -63,6 +66,8 @@ The demo program opens an interface where you can configure problems and submit 
 a solver.
 
 Configuration options can be found in the [demo_configs.py](demo_configs.py) file.
+
+<!-- End of boilerplate. -->
 
 ## Problem Description
 Give an overview of the problem you are solving in this demo.

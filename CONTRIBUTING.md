@@ -21,8 +21,8 @@ reading through the demo code repositories in [dwave-examples](https://github.co
 
 2.  Implement your example by following these instructions:
 
-    1.  It is preferable that all code changes occur either in new files or in files that contain
-        `demo` in the name. Below is a list of `demo` files and their functionality:
+    1.  It is preferable that all Python and CSS code occur either in new files or in files that
+        contain `demo` in the name. Below is a list of `demo` files and their functionality:
 
         *   [demo_callbacks.py](demo_callbacks.py) contains all the
             [Dash callback functions](https://dash.plotly.com/basic-callbacks) required to run the
