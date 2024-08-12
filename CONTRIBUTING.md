@@ -26,15 +26,18 @@ reading through the demo code repositories in [dwave-examples](https://github.co
 
         * [demo_callbacks.py](demo_callbacks.py) contains all the [Dash callback functions](https://dash.plotly.com/basic-callbacks) required to run the Dash app. Any new callbacks should be added to this file.
         * [demo_interface.py](demo_interface.py) contains all the Dash HTML components that generate the user interface (UI) for the app, including settings like sliders, checkboxes, and text inputs, as well as buttons and tables. If a Dash HTML component needs to be dynamically added to the UI by a Dash callback in `demo_callbacks.py`, it is encouraged to add a function generating this component to `demo_interface.py` and call this function from `demo_callbacks.py`.
-        * [demo_configs.py](demo_configs.py) contains all configurations and settings for the demo and is intended as a quick way to customize the demo for a specific audience or use case. It is encouraged to add more customization settings to this file, however, this file should not be cluttered with settings that are not helpful to the end user.
+        * [demo_configs.py](demo_configs.py) contains all configurations and settings for the demo and is intended as a quick way to customize the demo for a specific audience or use case. It is encouraged to add more customization settings to this file; however, this file should not be cluttered with settings that are not helpful to the end user.
         * [demo.css](demo.css) contains all custom CSS styling for the demo; any new CSS rules should be added here or in a new file in the `/assets/` directory. Dash reads all files in `/assets/` in alphabetical order so `demo.css` runs last and can overwrite previous styling rules.
         * [__demo_variables.css](__demo_variables.css) contains all CSS variables. It is encouraged to edit or add more CSS variables here.
-        * [demo_enums.py](demo_enums.py) contains Enum classes for any settings or variables are being used frequently to avoid string comparisons or other fragile code practices.
+        *    [demo_enums.py](demo_enums.py) contains [Enum](https://docs.python.org/3/library/enum.html) 
+              classes for any settings or variables are being used frequently to avoid string comparisons or other 
+              fragile code practices.
 
     2. All new files should be added to one of the following directories:
         * `/assets/` is a Dash-specific directory that must not contain subdirectories and must not be renamed. Dash always reads files in this directory in alphabetical order and therefore you do not need to explicitly import files from this directory. The `__base.css` file is a Dash-made file with some basic styling rules; this file should not be edited. All other CSS files that **do not** contain the word `demo` in the title, have been created specifically as defaults for this demo template. These files should _ideally_ not be altered. Any new CSS rules should be written in `demo.css` or in a new CSS file in `/assets/`.
-        * `/src/` should contain all functional code for the demo including solver implementations, class definitions, etc. This directory is not specific to Dash and therefore the use of subdirectories is permitted.
-        * `/static/` should contain all new static files such as images. This directory is not specific to Dash and therefore the use of subdirectories is permitted.
+        *    `/src/` should contain all functional code for the demo including solver implementations, class definitions, etc. 
+              You can add subdirectories as needed.
+        * `/static/` should contain all new static files such as images. You can add subdirectories as needed
         * `/tests/` should contain tests for all code found in `/src/`. All tests should be discoverable through `python -m unittest discover`.
 
     3. Follow the [README template](README.md) to create a README that explains your example and outlines how it works.
