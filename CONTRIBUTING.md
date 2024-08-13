@@ -21,7 +21,7 @@ reading through the demo code repositories in [dwave-examples](https://github.co
 
 2.  Implement your example by following these instructions:
 
-    1.  It is preferable that you write all Python and CSS code in either new files or files that
+    1.  It is preferable for you to write all Python and CSS code in either new files or files that
         contain `demo` in the name. Below is a list of `demo` files and their functionality:
 
         *   [demo_callbacks.py](demo_callbacks.py) contains all the
@@ -35,8 +35,8 @@ reading through the demo code repositories in [dwave-examples](https://github.co
             call this function from `demo_callbacks.py`.
         *   [demo_configs.py](demo_configs.py) contains all configurations and settings for the
             demo and is intended as a quick way to customize the demo for a specific audience or
-            use case. Add settings to this file that users might want to change; for example, ranges
-            of inputs and number of selections but not component names and internal variables.
+            use case. Add variables to this file that users may want to change; for example, titles
+            and default settings values but not evergreen labels or internal variables.
         *   [demo.css](demo.css) contains all custom CSS styling for the demo; any new CSS rules
             should be added here or in a new file in the `/assets/` directory. Dash reads all
             files in `/assets/` in alphabetical order so, out of the provided CSS files, `demo.css`
@@ -50,8 +50,8 @@ reading through the demo code repositories in [dwave-examples](https://github.co
     2.  All new files should be added to one of the following directories:
         *   `/assets/` is a Dash-specific directory that must not contain subdirectories and must
             not be renamed. Dash always reads files in this directory in alphabetical order and
-            therefore you do not need to explicitly import files from this directory. All CSS files
-            that **do not** contain the word `demo` in the title, should _ideally_ not be altered.
+            therefore you do not need to explicitly import files from this directory. Avoid altering
+            CSS files with the word `demo` in the filename.
         *   `/src/` should contain all functional code for the demo including solver implementations,
             class definitions, etc. You can add subdirectories as needed.
         *   `/static/` should contain all new static files such as images. You can add subdirectories
