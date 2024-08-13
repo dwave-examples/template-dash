@@ -21,7 +21,7 @@ reading through the demo code repositories in [dwave-examples](https://github.co
 
 2.  Implement your example by following these instructions:
 
-    1.  It is preferable that all Python and CSS code occur either in new files or in files that
+    1.  It is preferable that you write all Python and CSS code in either new files or files that
         contain `demo` in the name. Below is a list of `demo` files and their functionality:
 
         *   [demo_callbacks.py](demo_callbacks.py) contains all the
@@ -35,9 +35,8 @@ reading through the demo code repositories in [dwave-examples](https://github.co
             call this function from `demo_callbacks.py`.
         *   [demo_configs.py](demo_configs.py) contains all configurations and settings for the
             demo and is intended as a quick way to customize the demo for a specific audience or
-            use case. It is encouraged to add more customization settings to this file; however,
-            this file should not be cluttered with settings that are not helpful to the end user
-            (eg titles and other settings that are unlikely to ever be changed).
+            use case. Add settings to this file that users might want to change; for example, ranges
+            of inputs and number of selections but not component names and internal variables.
         *   [demo.css](demo.css) contains all custom CSS styling for the demo; any new CSS rules
             should be added here or in a new file in the `/assets/` directory. Dash reads all
             files in `/assets/` in alphabetical order so, out of the provided CSS files, `demo.css`
@@ -45,7 +44,7 @@ reading through the demo code repositories in [dwave-examples](https://github.co
         *   [__demo_variables.css](__demo_variables.css) contains all CSS variables.
             It is encouraged to edit or add more CSS variables here.
         *   [demo_enums.py](demo_enums.py) contains [Enum](https://docs.python.org/3/library/enum.html)
-            classes for any settings or variables are being used frequently to avoid string
+            classes for any settings or variables that are being used frequently to avoid string
             comparisons or other fragile code practices.
 
     2.  All new files should be added to one of the following directories:
@@ -68,8 +67,8 @@ reading through the demo code repositories in [dwave-examples](https://github.co
     [dwave-examples/template-dash](https://github.com/dwave-examples/template-dash) repository
     with a link to your example.
 
-4.  D-Wave will fork your repository and may make a pull request to get your approval for certain
-    code changes.
+When adding a contributed example, D-Wave forks your repository and may make a pull 
+request to get your approval for certain code changes.
 
 ## Final Checklist
 
