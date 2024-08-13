@@ -37,13 +37,13 @@ reading through the demo code repositories in [dwave-examples](https://github.co
             demo and is intended as a quick way to customize the demo for a specific audience or
             use case. Add variables to this file that users may want to change; for example, titles
             and default settings values but not evergreen labels or internal variables.
-        *   [demo.css](demo.css) contains all custom CSS styling for the demo; any new CSS rules
+        *   [demo.css](assets/demo.css) contains all custom CSS styling for the demo; any new CSS rules
             should be added here or in a new file in the `/assets/` directory. Dash reads all
             files in `/assets/` in alphabetical order so, out of the provided CSS files, `demo.css`
             runs last and can overwrite previous styling rules.
-        *   [__demo_variables.css](__demo_variables.css) contains all CSS variables.
+        *   [__demo_variables.css](assets/__demo_variables.css) contains all CSS variables.
             It is encouraged to edit or add more CSS variables here.
-        *   [demo_enums.py](demo_enums.py) contains [Enum](https://docs.python.org/3/library/enum.html)
+        *   [demo_enums.py](src/demo_enums.py) contains [Enum](https://docs.python.org/3/library/enum.html)
             classes for any settings or variables that are being used frequently to avoid string
             comparisons or other fragile code practices.
 
@@ -99,7 +99,8 @@ root directory to ensure the demo runs in
 - [ ] **CircleCI**: The demo contains the [`.circleci/`](.circleci/) directory to support running
 tests in CI. Once approved, we will make sure that your example is set up on our CircleCI account.
 
->Our examples are tested using CircleCI. For a list of operating systems and
+> [!NOTE]  
+> Our examples are tested using CircleCI. For a list of operating systems and
 Python versions we currently test our examples with, please take a look at [our
 documentation](https://docs.ocean.dwavesys.com/en/stable/overview/install.html).
 For more information, visit [orb-examples](https://circleci.com/developer/orbs/orb/dwave/orb-examples).
