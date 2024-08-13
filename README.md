@@ -53,19 +53,17 @@ Run the following terminal command to start the Dash app:
 python app.py
 ```
 
-If you plan on editing any files while the app is running, please run the app with the `--debug`
-command-line argument for live reloads and easier debugging:
-
-```bash
-python app.py --debug
-```
-
 Access the user interface with your browser at http://127.0.0.1:8050/.
 
 The demo program opens an interface where you can configure problems and submit these problems to
 a solver.
 
 Configuration options can be found in the [demo_configs.py](demo_configs.py) file.
+
+
+>**Note for Example Developers**: If you plan on editing any files while the app is running,
+please run the app with the `--debug` command-line argument for live reloads and easier debugging:
+`python app.py --debug`
 
 <!-- End of boilerplate. -->
 
