@@ -99,7 +99,7 @@ root directory to ensure the demo runs in
 - [ ] **CircleCI**: The demo contains the [`.circleci/`](.circleci/) directory to support running
 tests in CI. Once approved, we will make sure that your example is set up on our CircleCI account.
 
-> [!NOTE]  
+> [!NOTE]\
 > Our examples are tested using CircleCI. For a list of operating systems and
 Python versions we currently test our examples with, please take a look at [our
 documentation](https://docs.ocean.dwavesys.com/en/stable/overview/install.html).

@@ -30,7 +30,8 @@ Please include a screenshot of your demo below.
 
 ## Installation
 You can run this example without installation in cloud-based IDEs that support the
-[Development Containers specification](https://containers.dev/supporting) (aka "devcontainers").
+[Development Containers specification](https://containers.dev/supporting) (aka "devcontainers")
+such as GitHub Codespaces.
 
 For development environments that do not support `devcontainers`, install requirements:
 
@@ -60,8 +61,8 @@ a solver.
 
 Configuration options can be found in the [demo_configs.py](demo_configs.py) file.
 
-
->**Note for Example Developers**: If you plan on editing any files while the app is running,
+> [!NOTE]\
+> If you plan on editing any files while the app is running,
 please run the app with the `--debug` command-line argument for live reloads and easier debugging:
 `python app.py --debug`
 
