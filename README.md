@@ -44,11 +44,11 @@ If you are cloning the repo to your local system, working in a
 
 ## Usage
 Your development environment should be configured to access the
-[Leap&trade; Quantum Cloud Service](https://docs.ocean.dwavesys.com/en/stable/overview/sapi.html).
+[Leap&trade; quantum cloud service](https://docs.ocean.dwavesys.com/en/stable/overview/sapi.html).
 You can see information about supported IDEs and authorizing access to your Leap account
 [here](https://docs.dwavesys.com/docs/latest/doc_leap_dev_env.html).
 
-Run the following terminal command to start the Dash app:
+Run the following terminal command to start the Dash application:
 
 ```bash
 python app.py
@@ -62,8 +62,8 @@ a solver.
 Configuration options can be found in the [demo_configs.py](demo_configs.py) file.
 
 > [!NOTE]\
-> If you plan on editing any files while the app is running,
-please run the app with the `--debug` command-line argument for live reloads and easier debugging:
+> If you plan on editing any files while the application is running, please run the application
+with the `--debug` command-line argument for live reloads and easier debugging:
 `python app.py --debug`
 
 <!-- End of boilerplate. -->
