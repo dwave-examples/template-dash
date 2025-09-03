@@ -30,7 +30,7 @@ Please include a screenshot of your demo below.
 
 ## Installation
 You can run this example without installation in cloud-based IDEs that support the
-[Development Containers specification](https://containers.dev/supporting) (aka "devcontainers")
+[Development Containers Specification](https://containers.dev/supporting) (aka "devcontainers")
 such as GitHub Codespaces.
 
 For development environments that do not support `devcontainers`, install requirements:
@@ -44,9 +44,9 @@ If you are cloning the repo to your local system, working in a
 
 ## Usage
 Your development environment should be configured to access the
-[Leap&trade; quantum cloud service](https://docs.ocean.dwavesys.com/en/stable/overview/sapi.html).
+[Leap&trade; quantum cloud service](https://docs.dwavequantum.com/en/latest/ocean/sapi_access_basic.html).
 You can see information about supported IDEs and authorizing access to your Leap account
-[here](https://docs.dwavesys.com/docs/latest/doc_leap_dev_env.html).
+[here](https://docs.dwavequantum.com/en/latest/ocean/leap_authorization.html).
 
 Run the following terminal command to start the Dash application:
 
