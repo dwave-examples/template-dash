@@ -208,23 +208,33 @@ def generate_run_buttons() -> html.Div:
     )
 
 
-def generate_problem_details_table_rows(solver: str, time_limit: int) -> list[html.Tr]:
-    """Generates table rows for the problem details table.
+def generate_table(table_data: dict[str, list]) -> html.Table:
+    """Generates a table containing table_data.
 
     Args:
-        solver: The solver used for optimization.
-        time_limit: The solver time limit.
+        table_data: A dictionary of table header keys and table column values.
 
     Returns:
-        list[html.Tr]: List of rows for the problem details table.
+        html.Table: An HTML table containing table_data.
     """
+    table_columns = table_data.values()
+    num_rows = len(next(iter(table_columns)))
 
-    table_rows = (
-        ("Solver:", solver, "Time Limit:", f"{time_limit}s"),
-        ### Add more table rows here. Each tuple is a row in the table.
+    return html.Table(
+        className="problem-details-table",
+        children=[
+            html.Thead(html.Tr([html.Th(table_header) for table_header in table_data.keys()])),
+            html.Tbody(
+                [
+                    html.Tr(
+                        [
+                            html.Td(column[i]) for column in table_columns
+                        ]
+                    ) for i in range(num_rows)
+                ]
+            ),
+        ],
     )
-
-    return [html.Tr([html.Td(cell) for cell in row]) for row in table_rows]
 
 
 def problem_details(index: int) -> html.Div:
@@ -252,32 +262,7 @@ def problem_details(index: int) -> html.Div:
             ),
             html.Div(
                 className="details-to-collapse",
-                children=[
-                    html.Table(
-                        className="solution-stats-table",
-                        children=[
-                            # Problem details table header (optional)
-                            html.Thead(
-                                [
-                                    html.Tr(
-                                        [
-                                            html.Th(
-                                                colSpan=2,
-                                                children=["Problem Specifics"],
-                                            ),
-                                            html.Th(
-                                                colSpan=2,
-                                                children=["Run Time"],
-                                            ),
-                                        ]
-                                    )
-                                ]
-                            ),
-                            # A Dash callback function will generate content in Tbody
-                            html.Tbody(id="problem-details"),
-                        ],
-                    ),
-                ],
+                id="problem-details",
             ),
         ],
     )
@@ -337,16 +322,21 @@ def create_interface():
                                     dcc.Tab(
                                         label="Input",
                                         id="input-tab",
-                                        value="input-tab",  # used for switching tabs programatically
+                                        value="input-tab",  # for switching tabs programatically
                                         className="tab",
                                         children=[
-                                            dcc.Loading(
-                                                parent_className="input",
-                                                type="circle",
-                                                color=THEME_COLOR_SECONDARY,
-                                                # A Dash callback (in app.py) will generate content in the Div below
-                                                children=html.Div(id="input"),
-                                            ),
+                                            html.Div(
+                                                className="tab-content-wrapper",
+                                                children=[
+                                                    dcc.Loading(
+                                                        parent_className="input",
+                                                        type="circle",
+                                                        color=THEME_COLOR_SECONDARY,
+                                                        # A Dash callback (in app.py) will generate content in the Div below
+                                                        children=html.Div(id="input"),
+                                                    ),
+                                                ]
+                                            )
                                         ],
                                     ),
                                     dcc.Tab(
@@ -356,7 +346,7 @@ def create_interface():
                                         disabled=True,
                                         children=[
                                             html.Div(
-                                                className="tab-content-results",
+                                                className="tab-content-wrapper",
                                                 children=[
                                                     dcc.Loading(
                                                         parent_className="results",
