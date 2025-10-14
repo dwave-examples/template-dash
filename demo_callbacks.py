@@ -14,14 +14,13 @@
 
 from __future__ import annotations
 
-from typing import NamedTuple, Union
+from typing import Union
 
 import dash
-from dash import MATCH, ctx
+from dash import MATCH
 from dash.dependencies import Input, Output, State
-from dash.exceptions import PreventUpdate
 
-from demo_interface import generate_problem_details_table_rows
+from demo_interface import generate_table
 from src.demo_enums import SolverType
 
 
@@ -71,17 +70,8 @@ def render_initial_state(slider_value: int) -> str:
     return f"Put demo input here. The current slider value is {slider_value}."
 
 
-class RunOptimizationReturn(NamedTuple):
-    """Return type for the ``run_optimization`` callback function."""
-
-    results: str = dash.no_update
-    problem_details_table: list = dash.no_update
-    # Add more return variables here. Return values for callback functions
-    # with many variables should be returned as a NamedTuple for clarity.
-
-
 @dash.callback(
-    # The Outputs below must align with `RunOptimizationReturn`.
+    # The Outputs below must align with the return values of the function.
     Output("results", "children"),
     Output("problem-details", "children"),
     background=True,
@@ -117,7 +107,7 @@ def run_optimization(
     dropdown_value: int,
     checklist_value: list,
     radio_value: int,
-) -> RunOptimizationReturn:
+) -> tuple[str, list]:
     """Runs the optimization and updates UI accordingly.
 
     This is the main function which is called when the ``Run Optimization`` button is clicked.
@@ -135,18 +125,9 @@ def run_optimization(
         radio_value: The value of the radio.
 
     Returns:
-        A NamedTuple (RunOptimizationReturn) containing all outputs to be used when updating the HTML
-        template (in ``demo_interface.py``). These are:
-
-            results: The results to display in the results tab.
-            problem-details: List of the table rows for the problem details table.
+        results: The results to display in the results tab.
+        problem-details: List of the table rows for the problem details table.
     """
-
-    # Only run optimization code if this function was triggered by a click on `run-button`.
-    # Setting `Input` as exclusively `run-button` and setting `prevent_initial_call=True`
-    # also accomplishes this.
-    if run_click == 0 or ctx.triggered_id != "run-button":
-        raise PreventUpdate
 
     solver_type = SolverType(solver_type)
 
@@ -156,13 +137,9 @@ def run_optimization(
     ###########################
 
 
-    # Generates a list of table rows for the problem details table.
-    problem_details_table = generate_problem_details_table_rows(
-        solver=solver_type.label,
-        time_limit=time_limit,
+    # Generates the problem details table on the results page.
+    problem_details_table = generate_table(
+        {"Solver": [solver_type.label], "Time Limit": [time_limit]}
     )
 
-    return RunOptimizationReturn(
-        results="Put demo results here.",
-        problem_details_table=problem_details_table,
-    )
+    return "Put demo results here.", problem_details_table

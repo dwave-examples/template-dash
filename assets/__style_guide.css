@@ -16,6 +16,10 @@ limitations under the License.
 
 /* A custom base of style rules defined specifically for the demos */
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #f9f9f9;
     color: var(--grey-dark);
