@@ -16,6 +16,7 @@
 from __future__ import annotations
 
 from dash import dcc, html
+import dash_mantine_components as dmc
 
 from demo_configs import (
     CHECKLIST,
@@ -25,10 +26,11 @@ from demo_configs import (
     RADIO,
     SLIDER,
     SOLVER_TIME,
-    THEME_COLOR_SECONDARY,
     THUMBNAIL,
 )
 from src.demo_enums import SolverType
+
+THEME_COLOR = "#2d4376"
 
 
 def slider(label: str, id: str, config: dict) -> html.Div:
@@ -42,19 +44,18 @@ def slider(label: str, id: str, config: dict) -> html.Div:
     return html.Div(
         className="slider-wrapper",
         children=[
-            html.Label(label),
-            dcc.Slider(
+            html.Label(label, htmlFor=id),
+            dmc.Slider(
                 id=id,
                 className="slider",
                 **config,
-                marks={
-                    config["min"]: str(config["min"]),
-                    config["max"]: str(config["max"]),
-                },
-                tooltip={
-                    "placement": "bottom",
-                    "always_visible": True,
-                },
+                marks=[
+                    {"value": config["min"], "label": f"{config["min"]}"},
+                    {"value": config["max"], "label": f"{config["max"]}"},
+                ],
+                labelAlwaysOn=True,
+                thumbLabel=f"{label} slider",
+                color=THEME_COLOR,
             ),
         ],
     )
@@ -71,13 +72,12 @@ def dropdown(label: str, id: str, options: list) -> html.Div:
     return html.Div(
         className="dropdown-wrapper",
         children=[
-            html.Label(label),
-            dcc.Dropdown(
+            html.Label(label, htmlFor=id),
+            dmc.Select(
                 id=id,
-                options=options,
+                data=options,
                 value=options[0]["value"],
-                clearable=False,
-                searchable=False,
+                allowDeselect=False,
             ),
         ],
     )
@@ -96,7 +96,7 @@ def checklist(label: str, id: str, options: list, values: list, inline: bool = T
     return html.Div(
         className="checklist-wrapper",
         children=[
-            html.Label(label),
+            html.Label(label, htmlFor=id),
             dcc.Checklist(
                 id=id,
                 className=f"checklist{' checklist--inline' if inline else ''}",
@@ -121,7 +121,7 @@ def radio(label: str, id: str, options: list, value: int, inline: bool = True) -
     return html.Div(
         className="radio-wrapper",
         children=[
-            html.Label(label),
+            html.Label(label, htmlFor=id),
             dcc.RadioItems(
                 id=id,
                 className=f"radio{' radio--inline' if inline else ''}",
@@ -144,12 +144,12 @@ def generate_settings_form() -> html.Div:
     Returns:
         html.Div: A Div containing the settings for selecting the scenario, model, and solver.
     """
-    dropdown_options = generate_options(DROPDOWN)
+    dropdown_options = [{"label": label, "value": f"{i}"} for i, label in enumerate(DROPDOWN)]
     checklist_options = generate_options(CHECKLIST)
     radio_options = generate_options(RADIO)
 
     solver_options = [
-        {"label": solver_type.label, "value": solver_type.value} for solver_type in SolverType
+        {"label": solver_type.label, "value": f"{solver_type.value}"} for solver_type in SolverType
     ]
 
     return html.Div(
@@ -182,8 +182,8 @@ def generate_settings_form() -> html.Div:
                 "solver-type-select",
                 sorted(solver_options, key=lambda op: op["value"]),
             ),
-            html.Label("Solver Time Limit (seconds)"),
-            dcc.Input(
+            html.Label("Solver Time Limit (seconds)", htmlFor="solver-time-limit"),
+            dmc.NumberInput(
                 id="solver-time-limit",
                 type="number",
                 **SOLVER_TIME,
@@ -259,6 +259,7 @@ def problem_details(index: int) -> html.Div:
                     html.H5("Problem Details"),
                     html.Div(className="collapse-arrow"),
                 ],
+                **{"aria-expanded": "true"},
             ),
             html.Div(
                 className="details-to-collapse",
@@ -273,13 +274,20 @@ def create_interface():
     return html.Div(
         id="app-container",
         children=[
+            html.A(  # Skip link for accessibility
+                "Skip to main content",
+                href="#main-content",
+                id="skip-to-main",
+                className="skip-link",
+            ),
             # Below are any temporary storage items, e.g., for sharing data between callbacks.
             dcc.Store(id="run-in-progress", data=False),  # Indicates whether run is in progress
             # Header brand banner
-            html.Div(className="banner", children=[html.Img(src=THUMBNAIL)]),
+            html.Header(className="banner", children=[html.Img(src=THUMBNAIL, alt="D-Wave logo")]),
             # Settings and results columns
-            html.Div(
+            html.Main(
                 className="columns-main",
+                id="main-content",
                 children=[
                     # Left column
                     html.Div(
@@ -305,7 +313,9 @@ def create_interface():
                                 html.Button(
                                     id={"type": "collapse-trigger", "index": 0},
                                     className="left-column-collapse",
+                                    title="Collapse sidebar",
                                     children=[html.Div(className="collapse-arrow")],
+                                    **{"aria-expanded": "true"},
                                 ),
                             ),
                         ],
@@ -331,7 +341,7 @@ def create_interface():
                                                     dcc.Loading(
                                                         parent_className="input",
                                                         type="circle",
-                                                        color=THEME_COLOR_SECONDARY,
+                                                        color=THEME_COLOR,
                                                         # A Dash callback (in app.py) will generate content in the Div below
                                                         children=html.Div(id="input"),
                                                     ),
@@ -351,7 +361,7 @@ def create_interface():
                                                     dcc.Loading(
                                                         parent_className="results",
                                                         type="circle",
-                                                        color=THEME_COLOR_SECONDARY,
+                                                        color=THEME_COLOR,
                                                         # A Dash callback (in app.py) will generate content in the Div below
                                                         children=html.Div(id="results"),
                                                     ),

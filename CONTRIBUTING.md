@@ -92,6 +92,9 @@ is included in the root directory. All files include a license header.
 - [ ] **Tests**: All code included in the `/src/` directory has associated tests that are located in
 `/tests/` and discoverable through `python -m unittest discover`.
 
+- [ ] **Accessibility**: The demo must be tested for accessibility standards and score at least
+80%. The base template provided scores 100%.
+
 - [ ] **Codespaces**: The [`.devcontainer/`](.devcontainer/) directory is included in the demo's
 root directory to ensure the demo runs in
 [GitHub Codespaces](https://docs.github.com/en/codespaces/overview).
