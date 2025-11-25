@@ -24,7 +24,7 @@ A clear description allows us to properly categorize your demo.
 
 Please include a screenshot of your demo below.
 
-![Demo Example](static/demo.png)
+![Demo Example](static/demo.png "Image of demo interface")
 
 <!-- Below is boilerplate instructions to be included, as is, in the final demo. -->
 

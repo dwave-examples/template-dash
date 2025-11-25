@@ -26,13 +26,14 @@ from src.demo_enums import SolverType
 
 @dash.callback(
     Output({"type": "to-collapse-class", "index": MATCH}, "className"),
+    Output({"type": "collapse-trigger", "index": MATCH}, "aria-expanded"),
     inputs=[
         Input({"type": "collapse-trigger", "index": MATCH}, "n_clicks"),
         State({"type": "to-collapse-class", "index": MATCH}, "className"),
     ],
     prevent_initial_call=True,
 )
-def toggle_left_column(collapse_trigger: int, to_collapse_class: str) -> str:
+def toggle_left_column(collapse_trigger: int, to_collapse_class: str) -> tuple[str, str]:
     """Toggles a 'collapsed' class that hides and shows some aspect of the UI.
 
     Args:
@@ -42,13 +43,14 @@ def toggle_left_column(collapse_trigger: int, to_collapse_class: str) -> str:
 
     Returns:
         str: The new class name of the thing to collapse.
+        str: The aria-expanded value.
     """
 
     classes = to_collapse_class.split(" ") if to_collapse_class else []
     if "collapsed" in classes:
         classes.remove("collapsed")
-        return " ".join(classes)
-    return to_collapse_class + " collapsed" if to_collapse_class else "collapsed"
+        return " ".join(classes), "true"
+    return to_collapse_class + " collapsed" if to_collapse_class else "collapsed", "false"
 
 
 @dash.callback(
@@ -101,7 +103,7 @@ def run_optimization(
     # The parameters below must match the `Input` and `State` variables found
     # in the `inputs` list above.
     run_click: int,
-    solver_type: Union[SolverType, int],
+    solver_type: str,
     time_limit: float,
     slider_value: int,
     dropdown_value: int,
@@ -129,7 +131,7 @@ def run_optimization(
         problem-details: List of the table rows for the problem details table.
     """
 
-    solver_type = SolverType(solver_type)
+    solver_type = SolverType(int(solver_type))
 
 
     ###########################
