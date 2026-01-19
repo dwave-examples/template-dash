@@ -50,8 +50,8 @@ def slider(label: str, id: str, config: dict) -> html.Div:
                 className="slider",
                 **config,
                 marks=[
-                    {"value": config["min"], "label": f"{config["min"]}"},
-                    {"value": config["max"], "label": f"{config["max"]}"},
+                    {"value": config["min"], "label": f'{config["min"]}'},
+                    {"value": config["max"], "label": f'{config["max"]}'},
                 ],
                 labelAlwaysOn=True,
                 thumbLabel=f"{label} slider",
