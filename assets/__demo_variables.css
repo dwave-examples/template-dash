@@ -42,7 +42,7 @@ Dash reads all css files contained in `/assets/` so no imports are necessary.
     --font: "proxima-nova", "Helvetica Neue", sans-serif;
     --banner-height: 6.5rem;
     --left-col-width: 26.25rem;
-    --problem-details-height: 11.25rem;
+    --problem-details-height: 8rem;
     --title-section-height: 13.5rem;
     /*** Add new variables here ***/
 }
