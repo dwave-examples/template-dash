@@ -31,5 +31,5 @@ class SolverType(Enum):
         }[self]
 
 
-### If any settings or variables are being used repeatedly, thoughout the code, create a new
+### If any settings or variables are being used repeatedly, throughout the code, create a new
 ### Enum for the setting here to avoid string comparisons or other fragile code practices.

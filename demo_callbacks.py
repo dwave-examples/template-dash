@@ -69,7 +69,7 @@ def render_initial_state(slider_value: int) -> str:
     Returns:
         str: The content of the input tab.
     """
-    return f"Put demo input here. The current slider value is {slider_value}."
+    return f"Put demo visuals here. The current slider value is {slider_value}."
 
 
 @dash.callback(
@@ -89,10 +89,10 @@ def render_initial_state(slider_value: int) -> str:
         State("radio", "value"),
     ],
     running=[
-        (Output("cancel-button", "className"), "", "display-none"),  # Show/hide cancel button.
-        (Output("run-button", "className"), "display-none", ""),  # Hides run button while running.
+        (Output("cancel-button", "style"), {}, {"display": "none"}),  # Show/hide cancel button.
+        (Output("run-button", "style"), {"display": "none"}, {}),  # Hides run button while running.
         (Output("results-tab", "disabled"), True, False),  # Disables results tab while running.
-        (Output("results-tab", "label"), "Loading...", "Results"),
+        (Output("results-tab", "children"), "Loading...", "Results"),
         (Output("tabs", "value"), "input-tab", "input-tab"),  # Switch to input tab while running.
         (Output("run-in-progress", "data"), True, False),  # Can block certain callbacks.
     ],
