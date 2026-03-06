@@ -14,6 +14,7 @@
 
 """This file stores the Dash HTML layout for the app."""
 from __future__ import annotations
+from enum import EnumType
 
 from dash import dcc, html
 import dash_mantine_components as dmc
@@ -133,9 +134,18 @@ def radio(label: str, id: str, options: list, value: int, inline: bool = True) -
     )
 
 
-def generate_options(options_list: list) -> list[dict]:
+def generate_options(options: list | EnumType, str_val: bool = False) -> list[dict]:
     """Generates options for dropdowns, checklists, radios, etc."""
-    return [{"label": label, "value": i} for i, label in enumerate(options_list)]
+    if isinstance(options, EnumType):
+        return [
+            {"label": option.label, "value": f"{option.value}" if str_val else option.value}
+            for option in options
+        ]
+
+    return [
+        {"label": option, "value": f"{option}" if str_val else i}
+        for i, option in enumerate(options)
+    ]
 
 
 def generate_settings_form() -> html.Div:
@@ -144,13 +154,10 @@ def generate_settings_form() -> html.Div:
     Returns:
         html.Div: A Div containing the settings for selecting the scenario, model, and solver.
     """
-    dropdown_options = [{"label": label, "value": f"{i}"} for i, label in enumerate(DROPDOWN)]
+    dropdown_options = generate_options(DROPDOWN, str_val=True)
     checklist_options = generate_options(CHECKLIST)
     radio_options = generate_options(RADIO)
-
-    solver_options = [
-        {"label": solver_type.label, "value": f"{solver_type.value}"} for solver_type in SolverType
-    ]
+    solver_options = generate_options(SolverType, str_val=True)
 
     return html.Div(
         className="settings",
