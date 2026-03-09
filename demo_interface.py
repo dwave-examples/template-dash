@@ -14,7 +14,7 @@
 
 """This file stores the Dash HTML layout for the app."""
 from __future__ import annotations
-from enum import EnumType
+from enum import EnumMeta
 
 from dash import dcc, html
 import dash_mantine_components as dmc
@@ -134,9 +134,9 @@ def radio(label: str, id: str, options: list, value: int, inline: bool = True) -
     )
 
 
-def generate_options(options: list | EnumType, str_val: bool = False) -> list[dict]:
+def generate_options(options: list | EnumMeta, str_val: bool = False) -> list[dict]:
     """Generates options for dropdowns, checklists, radios, etc."""
-    if isinstance(options, EnumType):
+    if isinstance(options, EnumMeta):
         return [
             {"label": option.label, "value": f"{option.value}" if str_val else option.value}
             for option in options
