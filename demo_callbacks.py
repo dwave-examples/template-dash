@@ -14,8 +14,6 @@
 
 from __future__ import annotations
 
-from typing import Union
-
 import dash
 from dash import MATCH
 from dash.dependencies import Input, Output, State
