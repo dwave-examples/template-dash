@@ -85,7 +85,8 @@ limitations under the License.
 }
 
 .radio label,
-.checklist label {
+.checklist label,
+label.mantine-Checkbox-label {
     margin-top: 0.125rem;
     font-weight: 400;
     font-size: 1rem;
