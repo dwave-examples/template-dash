@@ -20,15 +20,19 @@ limitations under the License.
 }
 
 .mantine-Slider-label,
-.mantine-Slider-markLabel {
+.mantine-Slider-markLabel,
+.mantine-RangeSlider-label,
+.mantine-RangeSlider-markLabel {
     font-family: var(--font);
 }
 
-.mantine-Slider-markLabel {
+.mantine-Slider-markLabel,
+.mantine-RangeSlider-markLabel {
     color: #666666;
 }
 
-.mantine-Slider-label {
+.mantine-Slider-label,
+.mantine-RangeSlider-label {
     background-color: white;
     color: var(--grey-dark);
     border: 1px solid var(--grey);
@@ -41,7 +45,9 @@ limitations under the License.
 }
 
 .mantine-Slider-label:before,
-.mantine-Slider-label:after {
+.mantine-RangeSlider-label:before,
+.mantine-Slider-label:after,
+.mantine-RangeSlider-label:after {
     content: '';
     display: block;
     position: absolute;
@@ -49,14 +55,16 @@ limitations under the License.
     height: 0;
 }
 
-.mantine-Slider-label:before {
+.mantine-Slider-label:before,
+.mantine-RangeSlider-label:before {
     left: 6px;
     top: -13px;
     border: 6px solid transparent;
     border-bottom-color: var(--grey);
 }
 
-.mantine-Slider-label:after {
+.mantine-Slider-label:after,
+.mantine-RangeSlider-label:after {
     left: 7px;
     top: -10px;
     border: 5px solid transparent;

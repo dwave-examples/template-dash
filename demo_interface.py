@@ -40,7 +40,7 @@ def slider(label: str, id: str, config: dict) -> html.Div:
     Args:
         label: The title that goes above the slider.
         id: A unique selector for this element.
-        config: A dictionary of slider configurations, see dcc.Slider Dash docs.
+        config: A dictionary of slider configurations, see dmc.Slider Dash Mantine docs.
     """
     return html.Div(
         className="slider-wrapper",
@@ -59,6 +59,33 @@ def slider(label: str, id: str, config: dict) -> html.Div:
                 color=THEME_COLOR,
             ),
         ],
+    )
+
+
+def range_slider(label: str, id: str, config: dict) -> html.Div:
+    """Range slider element for value selection.
+
+    Args:
+        label: The title that goes above the range slider.
+        id: A unique selector for this element.
+        config: A dictionary of range slider configurations, see dmc.RangeSlider Dash Mantine docs.
+    """
+    return html.Div(
+        className="rangeslider-wrapper",
+        children=[
+            html.Label(label, htmlFor=id),
+            dmc.RangeSlider(
+                id=id,
+                className="slider",
+                **config,
+                marks=[
+                    {"value": config["min"], "label": f'{config["min"]}'},
+                    {"value": config["max"], "label": f'{config["max"]}'},
+                ],
+                labelAlwaysOn=True,
+                color=THEME_COLOR,
+            )
+        ]
     )
 
 
