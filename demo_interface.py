@@ -113,6 +113,27 @@ def checklist(label: str, id: str, options: list, values: list, inline: bool = T
     )
 
 
+def checkbox(label: str, id: str, checked: bool) -> html.Div:
+    """Checkbox element.
+
+    Args:
+        label: The title that goes above the checkbox.
+        id: A unique selector for this element.
+        checked: Whether the checkbox is checked or not.
+    """
+    return html.Div(
+        className="checkbox-wrapper",
+        children=[
+            dmc.Checkbox(
+                id=id,
+                label=label,
+                checked=checked,
+                color=THEME_COLOR,
+            )
+        ],
+    )
+
+
 def radio(label: str, id: str, options: list, value: str, inline: bool = True) -> html.Div:
     """Radio element for option selection.
 
