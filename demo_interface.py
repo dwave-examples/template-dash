@@ -122,7 +122,7 @@ def checkbox(label: str, id: str, checked: bool) -> html.Div:
         checked: Whether the checkbox is checked or not.
     """
     return html.Div(
-        className="checklist-wrapper",
+        className="checkbox-wrapper",
         children=[
             dmc.Checkbox(
                 id=id,
