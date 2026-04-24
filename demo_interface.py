@@ -217,7 +217,14 @@ def input(label: str, id: str, configs: dict, type: str="number") -> html.Div:
 
 
 def generate_options(options: list | EnumMeta | dict) -> list[dict]:
-    """Generates options for dropdowns, checklists, radios, etc."""
+    """Format options for dropdowns, checklists, radios, etc.
+
+    Args:
+        options: A list, EnumMeta, or dictionary of options to format.
+
+    Returns:
+        A list of dictionaries with "label" and "value" keys for each option.
+    """
     if isinstance(options, EnumMeta):
         return [{"label": option.label, "value": f"{option.value}"} for option in options]
 
@@ -228,10 +235,10 @@ def generate_options(options: list | EnumMeta | dict) -> list[dict]:
 
 
 def generate_settings_form() -> html.Div:
-    """This function generates settings for selecting the scenario, model, and solver.
+    """Generate settings for selecting the scenario, model, and solver.
 
     Returns:
-        html.Div: A Div containing the settings for selecting the scenario, model, and solver.
+        A Div containing the settings for selecting the scenario, model, and solver.
     """
     dropdown_options = generate_options(DROPDOWN)
     checklist_options = generate_options(CHECKLIST)
@@ -278,7 +285,7 @@ def generate_settings_form() -> html.Div:
 
 
 def generate_run_buttons() -> html.Div:
-    """Run and cancel buttons to run the optimization."""
+    """Generate run and cancel buttons to run the optimization."""
     return html.Div(
         id="button-group",
         children=[
@@ -294,13 +301,13 @@ def generate_run_buttons() -> html.Div:
 
 
 def generate_table(table_data: dict[str, list]) -> html.Table:
-    """Generates a table containing table_data.
+    """Generate a table containing table_data.
 
     Args:
         table_data: A dictionary of table header keys and table column values.
 
     Returns:
-        html.Table: An HTML table containing table_data.
+        An HTML table containing table_data.
     """
     table_columns = table_data.values()
     num_rows = len(next(iter(table_columns)))
@@ -326,11 +333,11 @@ def problem_details(index: int) -> html.Div:
     """Generate the problem details section.
 
     Args:
-        index: Unique element id to differentiate matching elements.
-            Must be different from left column collapse button.
+        index: Unique element id to differentiate matching elements. Must be different from left
+            column collapse button.
 
     Returns:
-        html.Div: Div containing a collapsable table.
+        Div containing a collapsable table.
     """
     return html.Div(
         id={"type": "to-collapse-class", "index": index},
@@ -354,8 +361,8 @@ def problem_details(index: int) -> html.Div:
     )
 
 
-def create_interface():
-    """Set the application HTML."""
+def create_interface() -> html.Div:
+    """Create the main application interface."""
     return html.Div(
         id="app-container",
         children=[
