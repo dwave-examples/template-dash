@@ -35,8 +35,8 @@ def toggle_left_column(collapse_trigger: int, to_collapse_class: str) -> tuple[s
     """Toggles a 'collapsed' class that hides and shows some aspect of the UI.
 
     Args:
-        collapse_trigger (int): The (total) number of times a collapse button has been clicked.
-        to_collapse_class (str): Current class name of the thing to collapse, 'collapsed' if not
+        collapse_trigger: The (total) number of times a collapse button has been clicked.
+        to_collapse_class: Current class name of the thing to collapse, 'collapsed' if not
             visible, empty string if visible.
 
     Returns:

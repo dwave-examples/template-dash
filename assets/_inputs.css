@@ -14,6 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+input::placeholder {
+    color: #656565 !important;
+}
+
 /* Style rules for the dmc.Slider element */
 .slider {
     margin-bottom: 2rem;

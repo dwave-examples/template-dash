@@ -83,6 +83,8 @@ def range_slider(label: str, id: str, config: dict) -> html.Div:
                     {"value": config["max"], "label": f'{config["max"]}'},
                 ],
                 labelAlwaysOn=True,
+                thumbFromLabel=f"{label} slider start",
+                thumbToLabel=f"{label} slider end",
                 color=THEME_COLOR,
             )
         ]
@@ -190,14 +192,39 @@ def radio(label: str, id: str, options: list, value: str, inline: bool = True) -
     )
 
 
-def generate_options(options: list | EnumMeta) -> list[dict]:
+def input(label: str, id: str, configs: dict, type: str="number") -> html.Div:
+    """Input element for either text or number input.
+
+    Args:
+        label: The title that goes above the input.
+        id: A unique selector for this element.
+        configs: A dictionary of configurations for the input element.
+        type: The type of input, either "number" or "text".
+    """
+    return html.Div(
+        className="input-wrapper",
+        children=[
+            html.Label(label, htmlFor=id),
+            dmc.TextInput(
+                id=id,
+                **configs,
+            ) if type == "text" else dmc.NumberInput(
+                id=id,
+                **configs,
+            ),
+        ],
+    )
+
+
+def generate_options(options: list | EnumMeta | dict) -> list[dict]:
     """Generates options for dropdowns, checklists, radios, etc."""
     if isinstance(options, EnumMeta):
-        return [
-            {"label": option.label, "value": f"{option.value}"} for option in options
-        ]
+        return [{"label": option.label, "value": f"{option.value}"} for option in options]
 
-    return [{"label": option, "value": f"{option}"} for option in options]
+    if isinstance(options, dict):
+        return [{"label": f"{key}", "value": f"{value}"} for key, value in options.items()]
+
+    return [{"label": f"{option}", "value": f"{option}"} for option in options]
 
 
 def generate_settings_form() -> html.Div:
@@ -241,11 +268,10 @@ def generate_settings_form() -> html.Div:
                 "solver-type-select",
                 sorted(solver_options, key=lambda op: op["value"]),
             ),
-            html.Label("Solver Time Limit (seconds)", htmlFor="solver-time-limit"),
-            dmc.NumberInput(
-                id="solver-time-limit",
-                type="number",
-                **SOLVER_TIME,
+            input(
+                "Solver Time Limit (seconds)",
+                "solver-time-limit",
+                SOLVER_TIME,
             ),
         ],
     )
