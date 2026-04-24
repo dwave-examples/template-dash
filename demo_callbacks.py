@@ -40,8 +40,10 @@ def toggle_left_column(collapse_trigger: int, to_collapse_class: str) -> tuple[s
             visible, empty string if visible.
 
     Returns:
-        str: The new class name of the thing to collapse.
-        str: The aria-expanded value.
+        A tuple containing:
+
+        - str: The new class name of the thing to collapse.
+        - str: The aria-expanded value.
     """
 
     classes = to_collapse_class.split(" ") if to_collapse_class else []
@@ -65,7 +67,7 @@ def render_initial_state(slider_value: int) -> str:
         slider_value: The value of the slider.
 
     Returns:
-        str: The content of the input tab.
+        The content of the input tab.
     """
     return f"Put demo visuals here. The current slider value is {slider_value}."
 
@@ -125,8 +127,10 @@ def run_optimization(
         radio_value: The value of the radio.
 
     Returns:
-        results: The results to display in the results tab.
-        problem-details: List of the table rows for the problem details table.
+        A tuple containing:
+
+        - str: The results to display in the results tab.
+        - list: List of the table rows for the problem details table.
     """
 
     solver_type = SolverType(int(solver_type))
