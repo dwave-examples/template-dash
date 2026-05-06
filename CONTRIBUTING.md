@@ -75,6 +75,11 @@ request to get your approval for certain code changes.
 - [ ] **PEP 8**: All code follows the [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide.
 If you are unsure, install and run [black](https://pypi.org/project/black/) to ensure correct formatting.
 
+- [ ] **AI Disclosure**: You must disclose whether AI has been used to assist in the development of
+your pull request. You must document which tool(s) have been used, how they were used, and specify
+what code or text is AI generated. We will reject any pull request that does not include the
+disclosure. See full policy [here](https://docs.dwavequantum.com/en/latest/ocean/ai_policy.html).
+
 - [ ] **Docstrings**: All functions contain docstrings describing what the function does and any
 arguments or return values. For more information, see the
 [Google docstrings convention](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings).
